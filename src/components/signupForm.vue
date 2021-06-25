@@ -22,6 +22,10 @@
           <input type="checkbox" required v-model="terms">
           <label>Accept terms and conditions</label>
       </div>
+<!--
+      <div class="submit">
+        <button>Create an account</button>
+      </div>-->
 
   </form>
 </template>
@@ -40,8 +44,8 @@ export default {
         }
     },
     methods:{
-        addSkill(e){
-            if(/*e.key ===',' &&*/ this.tempSkill){
+        addSkill(){
+            if(/*e.key ===',' && */this.tempSkill){
                 if(!this.skills.includes(this.tempSkill)){
                     this.skills.push(this.tempSkill)
                 }
@@ -110,6 +114,19 @@ input[type="checkbox"]{
     font-weight: bold;
     color: #777;
     cursor: pointer;
+}
+
+button{
+    background:#0b6dff;
+    border:0;
+    padding:10px 20px;
+    margin-top:20px;
+    color:white;
+    border-radius:20px;
+}
+
+.submit {
+    text-align: center;
 }
 
 </style>
