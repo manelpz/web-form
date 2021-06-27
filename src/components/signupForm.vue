@@ -1,19 +1,20 @@
 
 <template>
-  <form>
+  <form @submit.prevent="handleSubmit">
       <label>Email:</label>
       <input type="email" required v-model="email">
       <label>Password:</label>
       <input type="password" required v-model="password">
-      
+      <div v-if="passwordError" class="error">{{passwordError}}</div>
+
       <label>Role:</label>
       <select v-model="role"> 
           <option value="developer">Web Developer</option>
           <option value="designer">Web Designer</option>
       </select>
 
-      <label>Skills:</label>  
-      <input type="text" v-model="tempSkill" @keyup.enter="addSkill">
+      <label>Skills: (add with space bar)</label>  
+      <input type="text" v-model="tempSkill" @keyup.space="addSkill">
       <div v-for="skill in skills" :key="skill" class="pill" >
         <span @click="deleteSkill(skill)">{{skill}}</span>
       </div>
@@ -22,10 +23,10 @@
           <input type="checkbox" required v-model="terms">
           <label>Accept terms and conditions</label>
       </div>
-<!--
+      
       <div class="submit">
         <button>Create an account</button>
-      </div>-->
+      </div>
 
   </form>
 </template>
@@ -40,7 +41,8 @@ export default {
             role:'designer',
             terms:'false',
             tempSkill:'',
-            skills:[]
+            skills:[],
+            passwordError: ''
         }
     },
     methods:{
@@ -56,6 +58,19 @@ export default {
             this.skills = this.skills.filter((item) =>{
                 return item !== skill 
             })
+        },
+        handleSubmit(){
+            this.passwordError = this.password.length > 5 ? '': 'Password must be at least 6 chars long'
+            
+            //adding the logic for handling form
+            if(!this.passwordError){
+                console.log('email: ' + this.email)
+                console.log('password: ' + this.password)
+                console.log('role' + this.role)
+                console.log('skills'+this.skills)
+                console.log('terms accepted' + this.terms)
+            }
+
         }
     }
 }
@@ -129,4 +144,10 @@ button{
     text-align: center;
 }
 
+.error{
+    color:#ff0062;
+    margin-top:10px;
+    font-size:0.8em;
+    font-weight: bold;
+}
 </style>
