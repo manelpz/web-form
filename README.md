@@ -1,7 +1,7 @@
 # web-form
 web form in Vue.js 💻
 
-## Project setup
+### Project setup
 ```
 npm install
 ```
