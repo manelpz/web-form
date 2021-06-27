@@ -10,7 +10,8 @@
       <label>Role:</label>
       <select v-model="role"> 
           <option value="developer">Web Developer</option>
-          <option value="designer">Web Designer</option>
+          <option value="designer">Designer</option>
+          <option value="devops">DevOps</option>
       </select>
 
       <label>Skills: (add with space bar)</label>  
@@ -38,7 +39,7 @@ export default {
         return{
             email:'',
             password:'',
-            role:'designer',
+            role:'developer',
             terms:'false',
             tempSkill:'',
             skills:[],
