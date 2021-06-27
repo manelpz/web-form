@@ -14,4 +14,4 @@ npm run serve
 npm run build
 ```
 
-<img src="/public/gif.gif" alt="gif">
+<img src="/public/git.gif" alt="gif">
